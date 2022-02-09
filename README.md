@@ -20,7 +20,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/sqle157/github-user-search-app)
-- Live Site URL: [Live Demo](https://your-live-site-url.com)
+- Live Site URL: [Live Demo](https://sqle157.github.io/github-user-search-app/)
 
 ### Built with
 
