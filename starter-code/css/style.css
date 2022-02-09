@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+	/* Main Color */
+	/* Light Mode */
+	--azure-radiance: #0079ff;
+	--lynch: #697c9a;
+	--kashmir-blue: #4b6a98;
+	--zircon: #f6f8ff;
+	--white: #fefefe;
+
+	/* Font Family */
+	--ff: "Space Mono", monospace;
+	/* Font Weight */
+	--fw-400: 400;
+	--fw-700: 700;
+	/* Font Size */
+	--fs-26: 1.625rem;
+	--fs-22: 1.375rem;
+	--fs-15: 0.9375rem;
+	--fs-13: 0.8125rem;
+
+	/* Line Height */
+	--lh-38: 2.375rem;
+	--lh-33: 2.0625rem;
+	--lh-25: 1.5625rem;
+	--lh-24: 1.5rem;
+	--lh-20: 1.25rem;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: var(--ff);
+	font-weight: var(--fw-400);
+	font-size: var(--fs-15);
+	line-height: var(--lh-25);
+}
+
+h1 {
+	font-size: var(--fs-16);
+	font-weight: var(--fw-700);
+}
+
+h2 {
+	font-size: var(--fs-22);
+	line-height: var(--lh-33);
+	font-weight: var(--fw-700);
+}
+
+h3,
+h4,
+h5 {
+	font-size: var(--fs-13);
+	font-weight: var(--fw-400);
+}
+
+.sun-icon {
+	display: none;
+}
+
+/* Utilities Class */
+.text-white {
+	color: var(--white);
+}
+
+.text-azure {
+	color: var(--azure-radiance);
+}
+
+.text-lynch {
+	color: var(--lynch);
+}
+
+.border-50 {
+	border-radius: 50%;
+}
+
+.fw-700 {
+	font-weight: var(--fw-700);
+}
+
+.lh-20 {
+	line-height: var(--lh-20);
+}
+
+.ls-2-5 {
+	letter-spacing: 0.15625rem;
+}
+
+.toggle-container:hover .toggle-text {
+	cursor: pointer;
+	color: #90a4d4;
+}
+
+.toggle-container:hover #moon,
+.toggle-container:hover #sun {
+	cursor: pointer;
+	fill: #90a4d4;
+}
+
+.input-placeholder,
+.input-placeholder::-webkit-input-placeholder {
+	color: #fefefe;
+}
+
+/* Component CSS */
+.main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 20.4375rem;
+	gap: 2rem;
+}
+
+.header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.toggle-container {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.form-group {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.75rem;
+	border-radius: 1rem;
+	gap: 0.5rem;
+}
+
+.input-container {
+	width: min(87.2%, 32rem);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.search-bar {
+	width: 80%;
+	font-size: 0.625rem;
+	outline: none;
+	border: 0;
+	background: inherit;
+}
+
+.btn {
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	color: var(--white);
+	border: none;
+	background: var(--azure-radiance);
+}
+
+.error-mess {
+	width: 8rem;
+	display: none;
+	text-align: center;
+	font-size: 0.6875rem;
+	color: #f74646;
+	font-weight: var(--fw-700);
+}
+
+.card {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 2.0625rem 1.5rem 3rem;
+	border-radius: 1rem;
+}
+
+.card-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+}
+
+.card-body {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.user-bio {
+	width: 100%;
+	min-height: 3.9375rem;
+	max-height: 6.25rem;
+	overflow: auto;
+	overflow-wrap: break-word;
+	font-size: var(--fs-13);
+	font-weight: var(--fw-400);
+	line-height: var(--lh-25);
+}
+
+.user-stats {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border-radius: 0.75rem;
+	padding: 1.5rem 1rem;
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.card-footer,
+.contact-block {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.contact-block {
+	align-items: flex-start;
+}
+
+.user-contact {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.user-contact a {
+	text-decoration: none;
+}
+
+/* Media Query */
+@media only screen and (min-width: 48em) {
+	.main-container {
+		width: 35.8125rem;
+	}
+
+	h1 {
+		font-size: var(--fs-26);
+	}
+
+	h3 {
+		font-size: 1rem;
+	}
+
+	h4,
+	h5,
+	.error-mess,
+	.user-bio {
+		font-size: var(--fs-15);
+	}
+
+	.search-bar {
+		font-size: 1.125rem;
+	}
+
+	.card-footer {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+@media only screen and (min-width: 70em) {
+	.main-container {
+		width: 45.625rem;
+	}
+
+	.card-header {
+		position: relative;
+		align-items: flex-start;
+	}
+
+	.card-header h5 {
+		position: absolute;
+		right: 1.25rem;
+		top: 0;
+	}
+
+	.card-body,
+	.card-footer {
+		margin-left: 5.5rem;
+		width: 85%;
+	}
+
+	.card-body {
+		margin-top: -2.5rem;
+	}
+}
