@@ -20,7 +20,7 @@ let twitter_icon = document.getElementsByClassName("twitter-icon")[0];
 let company = document.getElementsByClassName("company")[0];
 let company_icon = document.getElementsByClassName("company-icon")[0];
 
-// Helper function to call update contact color
+// Helper function to call the update contact color function
 let updateContactColorHelper = (mode) => {
 	updateContactColor(location_title, location_icon, mode);
 	updateContactColor(website, website_icon, mode);
@@ -28,7 +28,7 @@ let updateContactColorHelper = (mode) => {
 	updateContactColor(company, company_icon, mode);
 };
 
-// Helper function to update contact info
+// Helper function to call the update contact info function
 let updateContactInfoHelper = (data, mode) => {
 	// Update the location
 	updateContactInfo(data, "location", mode);
