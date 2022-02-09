@@ -72,7 +72,10 @@ let updateContactInfo = (data, type, mode) => {
 
 		// Change website
 		case "website":
-			website_link.setAttribute("href", data.blog ? "https://" + data.blog : "");
+			website_link.setAttribute(
+				"href",
+				data.blog ? (String(data.blog).includes("https://") ? "" : "https://") + data.blog : ""
+			);
 			website.innerHTML = data.blog ? data.blog : "Not available";
 			updateContactColor(website, website_icon, mode);
 			break;
