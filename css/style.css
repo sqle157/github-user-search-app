@@ -133,8 +133,8 @@ h5 {
 	width: min(87.2%, 32rem);
 	display: flex;
 	align-items: center;
-	margin-left: 1rem;
-	gap: 1rem;
+	margin-left: 0.5rem;
+	gap: 0.25rem;
 }
 
 .search-bar {
@@ -159,7 +159,7 @@ h5 {
 }
 
 .error-mess {
-	width: 8rem;
+	width: 10rem;
 	display: none;
 	text-align: center;
 	font-size: 0.6875rem;
@@ -189,14 +189,14 @@ h5 {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	gap: 1.5rem;
 	align-items: flex-start;
 	justify-content: center;
 }
 
 .user-bio {
 	width: 100%;
-	min-height: 3.9375rem;
-	max-height: 6.25rem;
+	height: fit-content;
 	overflow: auto;
 	overflow-wrap: break-word;
 	font-size: var(--fs-13);
