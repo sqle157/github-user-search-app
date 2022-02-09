@@ -108,7 +108,6 @@ form.addEventListener("submit", (e) => {
 				console.log(data);
 
 				let date = new Date(data.created_at);
-				let mode = toggle.innerHTML === "Light" ? "Dark" : "Light";
 
 				const month = [
 					"Jan",
@@ -151,7 +150,7 @@ form.addEventListener("submit", (e) => {
 				document.getElementsByClassName("followings")[0].innerHTML = data.following;
 
 				// Update the contact info
-				updateContactInfoHelper(data, mode);
+				updateContactInfoHelper(data, toggle.innerHTML === "Light" ? "Dark" : "Light");
 			});
 		} else {
 			// If search is unsuccessful, return the error message
@@ -167,10 +166,9 @@ toggle.addEventListener("click", (e) => {
 
 	// Change Mode
 	toggle.innerHTML = e.target.innerHTML === "Dark" ? "Light" : "Dark";
-	let mode = toggle.innerHTML === "Dark" ? "Light" : "Dark";
 
 	// Change contact color
-	updateContactColorHelper(mode);
+	updateContactColorHelper(toggle.innerHTML === "Dark" ? "Light" : "Dark");
 });
 
 // Initialize the page with user preference
