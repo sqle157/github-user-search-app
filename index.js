@@ -1,6 +1,6 @@
 let toggle = document.getElementById("toggle");
-let toggle_text = document.getElementsByClassName("toggle-text")[0];
 let form = document.getElementById("form");
+let body = document.getElementsByClassName("body")[0];
 
 // All the variables we need to get the user's data
 // Location
@@ -20,21 +20,28 @@ let twitter_icon = document.getElementsByClassName("twitter-icon")[0];
 let company = document.getElementsByClassName("company")[0];
 let company_icon = document.getElementsByClassName("company-icon")[0];
 
-// Toggle Icon
-let moon_icon = document.getElementsByClassName("moon-icon")[0];
-let sun_icon = document.getElementsByClassName("sun-icon")[0];
-
-// Helper function to remove text from an element
-let removeText = (e) => {
-	e.classList.remove("text-lynch");
+// Helper function to call update contact color
+let updateContactColorHelper = (mode) => {
+	updateContactColor(location_title, location_icon, mode);
+	updateContactColor(website, website_icon, mode);
+	updateContactColor(twitter, twitter_icon, mode);
+	updateContactColor(company, company_icon, mode);
 };
 
-let addText = (e) => {
-	e.classList.add("text-lynch");
+// Helper function to update contact info
+let updateContactInfoHelper = (data, mode) => {
+	// Update the location
+	updateContactInfo(data, "location", mode);
+	// Update the website
+	updateContactInfo(data, "website", mode);
+	// Update the twitter
+	updateContactInfo(data, "twitter", mode);
+	// Update the company
+	updateContactInfo(data, "company", mode);
 };
 
-// Helper function to change the color of the contact icons
-let changeContactColor = (e, e_icon, mode) => {
+// Helper function to update the color of the contact icons
+let updateContactColor = (e, e_icon, mode) => {
 	// console.log(checkAvailability(e));
 	// console.log(mode);
 	e_icon.setAttribute(
@@ -54,65 +61,8 @@ let checkAvailability = (e) => {
 	return e.innerHTML === "Not available";
 };
 
-// Helper function to change the color of the document
-let changeColor = (mode) => {
-	if (mode === "Light") {
-		document.body.style.backgroundColor = "#f6f8ff";
-		document.body.style.color = "#000";
-
-		addText(toggle_text);
-		addText(document.getElementsByClassName("user-bio")[0]);
-		addText(document.getElementsByClassName("date-joined")[0]);
-
-		// Change the background
-		document.getElementsByClassName("card")[0].style.background =
-			document.getElementsByClassName("form-group")[0].style.background =
-			document.getElementsByClassName("input-container")[0].style.background =
-				"#fefefe";
-
-		document.getElementsByClassName("search-bar")[0].classList.remove("input-placeholder");
-		document.getElementsByClassName("user-stats")[0].style.background = "#f6f8ff";
-
-		// Change box-shadow
-		document.getElementsByClassName("card")[0].style.boxShadow =
-			document.getElementsByClassName("form-group")[0].style.boxShadow =
-				"0px 20px 20px #e2e5f7";
-
-		// Change contact color
-		changeContactColor(location_title, location_icon, mode);
-		changeContactColor(website, website_icon, mode);
-		changeContactColor(twitter, twitter_icon, mode);
-		changeContactColor(company, company_icon, mode);
-	} else {
-		document.body.style.backgroundColor = "#141d2f";
-		document.body.style.color = "#fff";
-
-		removeText(toggle_text);
-		removeText(document.getElementsByClassName("user-bio")[0]);
-		removeText(document.getElementsByClassName("date-joined")[0]);
-
-		document.getElementsByClassName("card")[0].style.background =
-			document.getElementsByClassName("form-group")[0].style.background =
-			document.getElementsByClassName("input-container")[0].style.background =
-				"#1e2a47";
-
-		document.getElementsByClassName("search-bar")[0].classList.add("input-placeholder");
-
-		document.getElementsByClassName("user-stats")[0].style.background = "#141d2f";
-
-		document.getElementsByClassName("card")[0].style.boxShadow =
-			document.getElementsByClassName("form-group")[0].style.boxShadow = "none";
-
-		// Change contact color
-		changeContactColor(location_title, location_icon, mode);
-		changeContactColor(website, website_icon, mode);
-		changeContactColor(twitter, twitter_icon, mode);
-		changeContactColor(company, company_icon, mode);
-	}
-};
-
-// Helper function to change the contact info
-let changeContactInfo = (data, type, mode) => {
+// Helper function to update the contact info
+let updateContactInfo = (data, type, mode) => {
 	switch (type) {
 		// Change location
 		case "location":
@@ -149,6 +99,7 @@ form.addEventListener("submit", (e) => {
 
 	let user = document.getElementById("input-search").value;
 
+	// fetch the data
 	fetch("https://api.github.com/users/" + user).then((res) => {
 		// If search is successful, return the user's data
 		if (res.ok) {
@@ -157,6 +108,8 @@ form.addEventListener("submit", (e) => {
 				console.log(data);
 
 				let date = new Date(data.created_at);
+				let mode = toggle.innerHTML === "Light" ? "Dark" : "Light";
+
 				const month = [
 					"Jan",
 					"Feb",
@@ -172,55 +125,33 @@ form.addEventListener("submit", (e) => {
 					"Dec",
 				];
 
-				// Change all the element accordingly
-				// Change the avatar
+				// Update all the element accordingly
+				// Update the avatar
 				document.getElementsByClassName("user-profile-img")[0].src = data.avatar_url;
 
-				// Change the name
+				// Update the name
 				document.getElementsByClassName("full-name")[0].innerHTML = data.name
 					? data.name
 					: data.login;
-				// Change the username
+				// Update the username
 				document.getElementsByClassName("username")[0].innerHTML = "@" + data.login;
 
-				// Change the date joined
+				// Update the date joined
 				document.getElementsByClassName("date-joined")[0].innerHTML =
 					"Joined " + date.getDate() + " " + month[date.getMonth()] + " " + date.getFullYear();
 
-				// Change the bio
+				// Update the bio
 				document.getElementsByClassName("user-bio")[0].innerHTML = data.bio
 					? data.bio
 					: "This profile has no bio";
 
-				// Change the stats (number of followers, following, repositories)
+				// Update the stats (number of followers, following, repositories)
 				document.getElementsByClassName("repo")[0].innerHTML = data.public_repos;
 				document.getElementsByClassName("followers")[0].innerHTML = data.followers;
 				document.getElementsByClassName("followings")[0].innerHTML = data.following;
 
-				// Change the location
-				changeContactInfo(
-					data,
-					"location",
-					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
-				);
-				// Change the website
-				changeContactInfo(
-					data,
-					"website",
-					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
-				);
-				// Change the twitter
-				changeContactInfo(
-					data,
-					"twitter",
-					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
-				);
-				// Change the company
-				changeContactInfo(
-					data,
-					"company",
-					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
-				);
+				// Update the contact info
+				updateContactInfoHelper(data, mode);
 			});
 		} else {
 			// If search is unsuccessful, return the error message
@@ -231,26 +162,24 @@ form.addEventListener("submit", (e) => {
 
 // Add event listener to the toggle button
 toggle.addEventListener("click", (e) => {
-	console.log(e.target.innerHTML);
-	changeColor(toggle.innerHTML);
+	// console.log(e.target.innerHTML);
+	body.classList.toggle("dark");
 
 	// Change Mode
 	toggle.innerHTML = e.target.innerHTML === "Dark" ? "Light" : "Dark";
-	moon_icon.style.display = e.target.innerHTML === "Light" ? "none" : "block";
-	sun_icon.style.display = e.target.innerHTML === "Light" ? "block" : "none";
+	let mode = toggle.innerHTML === "Dark" ? "Light" : "Dark";
+
+	// Change contact color
+	updateContactColorHelper(mode);
 });
 
-// Initialize the page
+// Initialize the page with user preference
 if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-	let mode = "Dark";
-	toggle_text.innerHTML = "Light";
-	moon_icon.style.display = "none";
-	sun_icon.style.display = "block";
-	changeColor(mode);
+	body.classList.add("dark");
+	toggle.innerHTML = "Light";
+	updateContactColorHelper("Dark");
 } else {
-	let mode = "Light";
-	toggle_text.innerHTML = "Dark";
-	moon_icon.style.display = "block";
-	sun_icon.style.display = "none";
-	changeColor(mode);
+	body.classList.remove("dark");
+	toggle.innerHTML = "Dark";
+	updateContactColorHelper("Light");
 }
