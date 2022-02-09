@@ -270,6 +270,12 @@ h5 {
 		flex-direction: row;
 		justify-content: space-between;
 	}
+
+	.user-profile-img {
+		width: 7.3125rem;
+		height: auto;
+		border-radius: 50%;
+	}
 }
 
 @media only screen and (min-width: 70em) {
@@ -290,11 +296,11 @@ h5 {
 
 	.card-body,
 	.card-footer {
-		margin-left: 5.5rem;
-		width: 85%;
+		margin-left: 8.5rem;
+		width: 80%;
 	}
 
 	.card-body {
-		margin-top: -2.5rem;
+		margin-top: -4.5rem;
 	}
 }
