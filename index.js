@@ -67,14 +67,14 @@ let updateContactInfo = (data, type, mode) => {
 		// Change location
 		case "location":
 			location_title.innerHTML = data.location ? data.location : "Not available";
-			changeContactColor(location_title, location_icon, mode);
+			updateContactColor(location_title, location_icon, mode);
 			break;
 
 		// Change website
 		case "website":
 			website_link.setAttribute("href", data.blog ? "https://" + data.blog : "");
 			website.innerHTML = data.blog ? data.blog : "Not available";
-			changeContactColor(website, website_icon, mode);
+			updateContactColor(website, website_icon, mode);
 			break;
 
 		// Change twitter
@@ -82,13 +82,13 @@ let updateContactInfo = (data, type, mode) => {
 			twitter.innerHTML = data.twitter_username
 				? "@" + data.twitter_username
 				: "Not available";
-			changeContactColor(twitter, twitter_icon, mode);
+			updateContactColor(twitter, twitter_icon, mode);
 			break;
 
 		// Change company
 		case "company":
 			company.innerHTML = data.company ? data.company : "Not available";
-			changeContactColor(company, company_icon, mode);
+			updateContactColor(company, company_icon, mode);
 			break;
 	}
 };
