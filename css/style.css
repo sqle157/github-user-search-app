@@ -161,6 +161,11 @@ h5 {
 	background: var(--azure-radiance);
 }
 
+.btn:hover {
+	cursor: pointer;
+	background: #60abff;
+}
+
 .error-mess {
 	width: 8rem;
 	display: none;
