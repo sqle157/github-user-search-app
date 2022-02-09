@@ -181,7 +181,7 @@ form.addEventListener("submit", (e) => {
 					? data.name
 					: data.login;
 				// Change the username
-				document.getElementsByClassName("username")[0].innerHTML = data.login;
+				document.getElementsByClassName("username")[0].innerHTML = "@" + data.login;
 
 				// Change the date joined
 				document.getElementsByClassName("date-joined")[0].innerHTML =
