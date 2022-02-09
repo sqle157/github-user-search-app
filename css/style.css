@@ -63,16 +63,8 @@ h5 {
 }
 
 /* Utilities Class */
-.text-white {
-	color: var(--white);
-}
-
 .text-azure {
 	color: var(--azure-radiance);
-}
-
-.text-lynch {
-	color: var(--lynch);
 }
 
 .border-50 {
@@ -100,11 +92,6 @@ h5 {
 .toggle-container:hover #sun {
 	cursor: pointer;
 	fill: #90a4d4;
-}
-
-.input-placeholder,
-.input-placeholder::-webkit-input-placeholder {
-	color: var(--white);
 }
 
 /* Component CSS */
