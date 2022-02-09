@@ -198,13 +198,29 @@ form.addEventListener("submit", (e) => {
 				document.getElementsByClassName("followings")[0].innerHTML = data.following;
 
 				// Change the location
-				changeContactInfo(data, "location", toggle_text.innerHTML);
+				changeContactInfo(
+					data,
+					"location",
+					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
+				);
 				// Change the website
-				changeContactInfo(data, "website", toggle_text.innerHTML);
+				changeContactInfo(
+					data,
+					"website",
+					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
+				);
 				// Change the twitter
-				changeContactInfo(data, "twitter", toggle_text.innerHTML);
+				changeContactInfo(
+					data,
+					"twitter",
+					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
+				);
 				// Change the company
-				changeContactInfo(data, "company", toggle_text.innerHTML);
+				changeContactInfo(
+					data,
+					"company",
+					toggle_text.innerHTML === "Dark" ? "Light" : "Dark"
+				);
 			});
 		} else {
 			// If search is unsuccessful, return the error message
